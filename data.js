@@ -10,7 +10,8 @@ var data =  {
   "founder": "[\"Kalyan Krisnamurthy\",\"KK\"]",
   "contactperson": "KK",
   "contactnumber": "[\"1800457870\"]",
-  "sdg": "[\"1\",\"2\",\"3\",\"3\",\"3\",\"3\"]",
+  "sdg": "[\"1\",\"2\",\"4\",\"5\",\"6\"]",
+  
   "projects" : [{ 'name': 'WALMART-1',
                      'video': 'https://www.youtube.com/embed/zpOULjyy-n8?rel=0',
                      'image':'http://pluspng.com/img-png/logo-flipkart-png-flipkart-logo-vector-300.png',
@@ -35,7 +36,6 @@ var data =  {
   }
   
 
-  
 
 
     
@@ -46,14 +46,7 @@ var data =  {
       document.getElementById("demo3").innerHTML = data.dateofinception;
       document.getElementById("demo4").innerHTML = data.cinnumber;
       document.getElementById("demo5").innerHTML = data.address;
-      // document.getElementById("demo6").innerHTML = data.address;
-    
-  
-    // function myAwards(){
-    //   var y = document.getElementById("award").innerText;
-    //   document.getElementById("award1").innerHTML = data.companyawards;
    
-    // }
 
     document.getElementById("award").innerHTML = data.companyawards;
     document.getElementById("mem").innerHTML = data.membership;
@@ -66,6 +59,9 @@ var data =  {
       founder.map(founder => {
         founderh2.innerHTML = (founderh2.innerText ? founderh2.innerText+" , " : "") + founder;
       })
+
+     
+     
     
       document.getElementById("exp2").innerHTML = data.contactperson;
       document.getElementById("exp4").innerHTML = data.address;
@@ -77,20 +73,42 @@ var data =  {
       })
 
 
+   
+    var sdgmap = {
+      "1": "No Poverty",
+      "2": "Zero Hunger",
+      "3": "Good Health and Well-being",
+      "4": "Quality Education",
+      "5":"Gender Equality",
+       "6": "Clean Water and Sanitation",
+        "7": "Affordable and Clean Energy",
+        "8": "Decent Work and Economic Growth",
+        "9": "Industry, Innovation and Infrastructure",
+        "10": "Reduced Inequality",
+        "11": "Sustainable Cities and Communities",
+        "12": "Responsible Consumption and Production",
+        "13": "Climate Action",
+        "14": "Life Below Water",
+        "15": "Life on Land",
+        "16": "Peace and Justice Strong Institutions",
+        "17": "Partnerships to achieve the Goal",
+    }
       const sdgDetail =document.getElementById("sdg");
-      const sdg = data.sdg.replace(/\[|\]|\"/gi, "").split(",");
-      sdg.map(sdg => {
-        sdgDetail.innerHTML = (sdgDetail.innerText ? sdgDetail.innerText+" , " : "") + sdg;
-      })
+       const sdg = data.sdg.replace(/\[|\]|\"/gi, "").split(",");
+
+
+    sdglist = JSON.parse(data.sdg)
+    console.log(sdglist)
+    var text = "";
+    var i;
+    for(i=0; i<sdglist.length; i++){
+      text += sdgmap[sdglist[i]] + "<br>";
+  
+    }
+    document.getElementById("sdg").innerHTML = text;
+    
 
     
-      const video = document.querySelectorAll("video");
-
-      for(var i; i< data.projects.length; i++){
-                
-          video[i].src = data.projects[i].video;
-
-      }
 
 
       const container = document.querySelector(".container");
